@@ -13,7 +13,7 @@ public class WhiteMovement : MonoBehaviour
     public float yRange = 6.5f;
     
     public GameObject projectile;
-    public Vector3 offset = new Vector3(0,1,0);
+    public Vector3 offset = new Vector3(0,0,0);
     // Update is called once per frame
     void Update()
     {
@@ -48,12 +48,6 @@ public class WhiteMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(projectile, transform.position + offset, projectile.transform.rotation);
-        }
-
-        //Projectile Direction
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            transform.rotation = new Quaternion(0,0,0,1);
         }
     }    
 }
