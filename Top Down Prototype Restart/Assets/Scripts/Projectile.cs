@@ -21,18 +21,19 @@ public class Projectile : MonoBehaviour
         {
             direction = "Left";
         }
-
-        if(hInput > 0)
+        else if(hInput > 0)
         {
             direction = "Right";
         }
-
-        if(vInput < 0)
+        else if(vInput < 0)
         {
             direction = "Down";
         }
-
-        if(vInput > 0)
+        else if(vInput > 0)
+        {
+            direction = "Up";
+        }
+        else
         {
             direction = "Up";
         }

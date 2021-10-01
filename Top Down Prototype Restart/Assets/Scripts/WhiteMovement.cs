@@ -45,9 +45,9 @@ public class WhiteMovement : MonoBehaviour
             transform.position = new Vector3(transform.position.x, yRange, transform.position.z);
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Instantiate(projectile, transform.position + offset, projectile.transform.rotation);
+            Instantiate(projectile, transform.position, projectile.transform.rotation);
         }
     }    
 }
