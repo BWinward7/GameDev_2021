@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class GravityOrbit : MonoBehaviour
 {
-    /*
-    public float Gravity;
+    public float gravity;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<GravityController>())
         {
-            other.GetComponent<GravityController>().Gravity = this.GetComponent<GravityOrbit>();
+            other.GetComponent<GravityController>().gravity = this.GetComponent<GravityOrbit>();
         }
     }
-    */
 }

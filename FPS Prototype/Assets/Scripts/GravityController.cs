@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GravityController : MonoBehaviour
 {
-    /*
-    public GravityOrbit Gravity;
+    public GravityOrbit gravity;
     private Rigidbody rb;
 
     public float RotationSpeed = 20;
@@ -18,15 +17,14 @@ public class GravityController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Gravity)
+        if(gravity)
         {
             Vector3 gravityUp = Vector3.zero;
-            gravityUp = (transform.position - Gravity.transform.position).normalized;
+            gravityUp = (transform.position - gravity.transform.position).normalized;
             Vector3 localUp = transform.up;
             Quaternion targetrotation = Quaternion.FromToRotation(localUp, gravityUp) * transform.rotation;
             transform.up = Vector3.Lerp(transform.up, gravityUp, RotationSpeed * Time.deltaTime);
-            rb.AddForce((-gravityUp * Gravity.Gravity) * rb.mass);
+            rb.AddForce((-gravityUp * gravity.gravity) * rb.mass);
         }
     }
-    */
 }
