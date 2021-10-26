@@ -1096,6 +1096,7 @@ GameObject:
   - component: {fileID: 1682681988}
   - component: {fileID: 1682681994}
   - component: {fileID: 1682681995}
+  - component: {fileID: 1682681996}
   m_Layer: 0
   m_Name: Renma
   m_TagString: Untagged
@@ -1228,7 +1229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27e682859b1b4a6695cebb379b11d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 7776570916382463844, guid: e2fcd3c050b9b4a2798c0bba2bb7091c, type: 3}
+  bulletPool: {fileID: 1682681996}
   projectileStart: {fileID: 575086951}
   projectileSpeed: 100
   currentAmmo: 0
@@ -1249,6 +1250,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: {fileID: 98121429}
   RotationSpeed: 20
+--- !u!114 &1682681996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682681987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc5e14e70d0d4e319379ece287b03f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objPrefab: {fileID: 7776570916382463844, guid: e2fcd3c050b9b4a2798c0bba2bb7091c, type: 3}
+  createOnStart: 0
 --- !u!1 &1795497759
 GameObject:
   m_ObjectHideFlags: 0

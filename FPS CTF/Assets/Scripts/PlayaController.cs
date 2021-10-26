@@ -19,7 +19,8 @@ public class PlayaController : MonoBehaviour
     //Weapon
     private PlayaWeapon weapon;
 
-    void Awake() {
+    void Awake() 
+    {
         //Components
         camera = Camera.main;
         rigidbody = GetComponent<Rigidbody>();
@@ -39,7 +40,8 @@ public class PlayaController : MonoBehaviour
         }
     }
 
-    void Move() {
+    void Move() 
+    {
         float x = Input.GetAxis("Horizontal") * moveSpeed;
         float z = Input.GetAxis("Vertical") * moveSpeed;
         //Face Camera
@@ -50,19 +52,22 @@ public class PlayaController : MonoBehaviour
         rigidbody.velocity = dir;
     }
 
-    void Jump() {
+    void Jump() 
+    {
         Ray ray = new Ray(transform.position, Vector3.down);
         if(Physics.Raycast(ray, 1.1f))
             rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
-    void CameraLook() {
+    void CameraLook()
+    {
         float y = Input.GetAxis("Mouse X") * lookSens;
         rotX += Input.GetAxis("Mouse Y") * lookSens;
-        //Clamp Camera
+        //Clamps the camera up and down rotation
         rotX = Mathf.Clamp(rotX, minLookX, maxLookX);
-        //Rotate Camera
+        //Apply rotation to camera
         camera.transform.localRotation = Quaternion.Euler(-rotX,0,0);
         transform.eulerAngles += Vector3.up * y;
+        
     }
 }
