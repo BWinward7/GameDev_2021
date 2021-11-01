@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayaWeapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
-    public GameObject projectilePrefab;
+    public ObjectPool bulletPool;
     public Transform projectileStart;
     public float projectileSpeed;
 
@@ -20,7 +20,7 @@ public class PlayaWeapon : MonoBehaviour
     void Update()
     {
         // are we attached to the player
-        if(GetComponent<PlayaController>())
+        if(GetComponent<PlayerController>())
         {
             isPlayer = true;
         }
@@ -39,7 +39,9 @@ public class PlayaWeapon : MonoBehaviour
     {
         lastAttackTime = Time.time;
         currentAmmo--;
-        GameObject bullet = Instantiate(projectilePrefab, projectileStart.position, projectileStart.rotation);
+        GameObject bullet = bulletPool.GetObject();
+        bullet.transform.position = projectileStart.position;
+        bullet.transform.rotation = projectileStart.rotation;
         //set the velocity
         bullet.GetComponent<Rigidbody>().velocity = projectileStart.forward * projectileSpeed;
     }
