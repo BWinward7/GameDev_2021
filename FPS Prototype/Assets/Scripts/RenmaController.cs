@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class RenmaController : MonoBehaviour
 {
-    //Movement
+    [Header("Movement")]
     public float moveSpeed;
     public float jumpForce;
     //Variables for moded move
     public float hInput;
     public float vInput;
     
-    //Camera
+    [Header("Camera")]
     public float lookSensitivity; //Mouse look sensitivity
     public float maxLookX; //Lowest Down Looking Posisiton
     public float minLookX; //Highest Up Looking Position
     private float rotX; //Current X rotation of the camera
+    [Header("GameObjects and Components")]
     private Camera caam;
     private Rigidbody rb;
     
     private Weapon weapon;
+    [Header("Stats")]
+    public int curHP;
+    public int maxHP;
 
     void Awake() 
     {
@@ -29,6 +33,19 @@ public class RenmaController : MonoBehaviour
         weapon = GetComponent<Weapon>();
         // Disable Cursor
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+
+        if(curHP <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+
     }
 
     // Update is called once per frame
