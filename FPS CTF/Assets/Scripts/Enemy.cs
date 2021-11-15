@@ -20,14 +20,22 @@ public class Enemy : MonoBehaviour
     
     private Weapon weapon;
     private GameObject target;
+    private GameObject team;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         //Gather the Components
         weapon = GetComponent<Weapon>();
-        target = FindObjectOfType<PlayerController>().gameObject;
-
+        player = FindObjectOfType<PlayerController>().gameObject;
+        team = FindObjectOfType<Team>().gameObject;
+        float pdist = Vector3.Distance(transform.position, player.transform.position);
+        float tdist = Vector3.Distance(transform.position, team.transform.position);
+        if(pdist <= tdist)
+            target = player;
+        else
+            target = team;
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
     }
 
@@ -72,12 +80,17 @@ public class Enemy : MonoBehaviour
         transform.eulerAngles = Vector3.up * angle;
         
         float dist = Vector3.Distance(transform.position, target.transform.position);
-
         if(dist <= attackRange){
             if(weapon.CanShoot())
                 weapon.Shoot();
         }
         else
             ChaseTarget();
+        float pdist = Vector3.Distance(transform.position, player.transform.position);
+        float tdist = Vector3.Distance(transform.position, team.transform.position);
+        if(pdist <= tdist)
+            target = player;
+        else
+            target = team;
     }
 }

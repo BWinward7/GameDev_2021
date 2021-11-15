@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 459461378206684817}
   - component: {fileID: 7841903257560772151}
   - component: {fileID: 7577987995901172100}
-  - component: {fileID: 7137689395190723120}
   - component: {fileID: 3465709034816804862}
+  - component: {fileID: 2647513100939179817}
   m_Layer: 0
   m_Name: Team Projectiles
   m_TagString: Untagged
@@ -97,20 +97,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7137689395190723120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5758961686151693537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d4847b41dd54078a307f8e195f4150, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  lifetime: 10
 --- !u!54 &3465709034816804862
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,3 +113,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2647513100939179817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758961686151693537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4beddf940d73d417b9d7699e4ee3a2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  lifetime: 2

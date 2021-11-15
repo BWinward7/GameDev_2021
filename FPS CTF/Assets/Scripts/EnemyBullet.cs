@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     public int damage = 10;
     public float lifetime;
@@ -23,18 +23,16 @@ public class Bullet : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             other.GetComponent<PlayerController>().TakeDamage(damage);
-            gameObject.SetActive(false);
+        }
+        if(other.CompareTag("Team"))
+        {
+            other.GetComponent<Enemy>().TakeDamage(damage);
         }
         else
-            if(other.CompareTag("Enemy"))
-            {
-                other.GetComponent<Enemy>().TakeDamage(damage);
-                gameObject.SetActive(false);
-            }
-        //Disabe Bullet
-        
+            gameObject.SetActive(false);
     }
     // Update is called once per frame
+    //Disabe Bullet
     void Update()
     {
         if(Time.time - shootTime >= lifetime)
