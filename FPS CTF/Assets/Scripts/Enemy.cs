@@ -29,13 +29,6 @@ public class Enemy : MonoBehaviour
         //Gather the Components
         weapon = GetComponent<Weapon>();
         player = FindObjectOfType<PlayerController>().gameObject;
-        team = FindObjectOfType<Team>().gameObject;
-        float pdist = Vector3.Distance(transform.position, player.transform.position);
-        float tdist = Vector3.Distance(transform.position, team.transform.position);
-        if(pdist <= tdist)
-            target = player;
-        else
-            target = team;
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
     }
 
@@ -71,8 +64,39 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
     // Update is called once per frame
+    public Transform GetClosestTeam()
+        {
+            GameObject[] team = GameObject.FindGameObjectsWithTag("Team");
+            float closestDistance = Mathf.Infinity;
+            Transform trans = null;
+
+            foreach (GameObject go in team)
+            {
+                float currentDistance;
+                currentDistance = Vector3.Distance(transform.position, go.transform.position);
+                if (currentDistance < closestDistance)
+                {
+                    closestDistance = currentDistance;
+                    trans = go.transform;
+                }
+            }
+            return trans;
+        }
+    void ChooseTarget(closestTeam)
+    {
+        
+        team = closestTeam;
+        float pdist = Vector3.Distance(transform.position, player.transform.position);
+        float tdist = Vector3.Distance(transform.position, team.transform.position);
+        if(pdist <= tdist)
+            target = player;
+        else
+            target = team;
+    }
     void Update()
     {
+        closestTeam = GetClosestTeam();
+        ChooseTarget(closestTeam);
         //Look at Target
         Vector3 dir = (target.transform.position - transform.position).normalized;
         float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
@@ -86,11 +110,6 @@ public class Enemy : MonoBehaviour
         }
         else
             ChaseTarget();
-        float pdist = Vector3.Distance(transform.position, player.transform.position);
-        float tdist = Vector3.Distance(transform.position, team.transform.position);
-        if(pdist <= tdist)
-            target = player;
-        else
-            target = team;
+       
     }
 }

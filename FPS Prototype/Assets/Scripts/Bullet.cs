@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     public float lifetime;
     private float shootTime;
 
+    public GameObject hitParticle;
+
     void OnEnable()
     {
         shootTime = Time.time;
@@ -17,8 +19,10 @@ public class Bullet : MonoBehaviour
     {
         
     }
-        void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
+        GameObject obj = Instantiate(hitParticle, transform.position, Quaternion.identity);
+        Destroy(obj, 0.2f);
         //Did we hit the targer aka player
         if(other.CompareTag("Player"))
         {
