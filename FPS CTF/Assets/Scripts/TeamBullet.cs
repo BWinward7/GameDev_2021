@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TeamBullet : MonoBehaviour
 {
-    public int damage = 10;
+    public int damage = 1;
     public float lifetime;
     private float shootTime;
 

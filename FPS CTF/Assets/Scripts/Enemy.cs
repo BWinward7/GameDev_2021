@@ -20,8 +20,9 @@ public class Enemy : MonoBehaviour
     
     private Weapon weapon;
     private GameObject target;
-    private GameObject team;
     private GameObject player;
+    public Transform closestTeam;
+    private GameObject rteam;
 
     // Start is called before the first frame update
     void Start()
@@ -79,19 +80,22 @@ public class Enemy : MonoBehaviour
                     closestDistance = currentDistance;
                     trans = go.transform;
                 }
+                rteam = go;
             }
             return trans;
         }
-    void ChooseTarget(closestTeam)
+    void ChooseTarget(Transform trans)
     {
-        
-        team = closestTeam;
         float pdist = Vector3.Distance(transform.position, player.transform.position);
-        float tdist = Vector3.Distance(transform.position, team.transform.position);
-        if(pdist <= tdist)
+        float tdist = Vector3.Distance(transform.position, trans.position);
+        if(pdist <= tdist + 10)
             target = player;
-        else
-            target = team;
+        else if(pdist <=30)
+            target=player;
+        else if(tdist <=30 && tdist > 0)
+            target = rteam;
+        //else
+            //Patrol();
     }
     void Update()
     {

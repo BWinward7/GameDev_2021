@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public int damage = 10;
+    public int damage = 1;
     public float lifetime;
     private float shootTime;
 
@@ -26,7 +26,7 @@ public class EnemyBullet : MonoBehaviour
         }
         if(other.CompareTag("Team"))
         {
-            other.GetComponent<Enemy>().TakeDamage(damage);
+            other.GetComponent<Team>().TakeDamage(damage);
         }
         else
             gameObject.SetActive(false);

@@ -19,6 +19,7 @@ public class Team : MonoBehaviour
     private List<Vector3> path;
     
     private Weapon weapon;
+    private GameObject[] targets;
     private GameObject target;
 
     // Start is called before the first frame update
@@ -26,7 +27,8 @@ public class Team : MonoBehaviour
     {
         //Gather the Components
         weapon = GetComponent<Weapon>();
-        target = FindObjectOfType<Enemy>().gameObject;
+        GameObject[] targets= GameObject.FindGameObjectsWithTag("Enemy");
+        target = targets[0];
 
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
     }
@@ -65,6 +67,8 @@ public class Team : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject[] targets= GameObject.FindGameObjectsWithTag("Enemy");
+        target = targets[0];
         //Look at Target
         Vector3 dir = (target.transform.position - transform.position).normalized;
         float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
