@@ -8,6 +8,8 @@ public class TeamBullet : MonoBehaviour
     public float lifetime;
     private float shootTime;
 
+    public GameObject teamHitParticle;
+
     void OnEnable()
     {
         shootTime = Time.time;
@@ -20,6 +22,8 @@ public class TeamBullet : MonoBehaviour
         void OnTriggerEnter(Collider other)
     {
         //Did we hit the targer aka player
+        GameObject obj = Instantiate(teamHitParticle, transform.position, Quaternion.identity);
+        Destroy(obj, 0.2f);
         if(other.CompareTag("Enemy"))
         {
             other.GetComponent<Enemy>().TakeDamage(damage);

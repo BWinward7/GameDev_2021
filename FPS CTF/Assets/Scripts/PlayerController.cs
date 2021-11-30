@@ -97,4 +97,14 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles += Vector3.up * y;
         
     }
+
+    public void GiveHealth (int amountToGive)
+    {
+        curHP = Mathf.Clamp(curHP + amountToGive, 0, maxHP);
+    }
+
+    public void GiveAmmo (int ammountToGive)
+    {
+        weapon.currentAmmo = Mathf.Clamp(weapon.currentAmmo + ammountToGive, 0, weapon.maxAmmo);
+    }
 }
