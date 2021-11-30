@@ -22,7 +22,7 @@ public class EnemyBullet : MonoBehaviour
         void OnTriggerEnter(Collider other)
     {
         //Did we hit the targer aka player
-         GameObject obj = Instantiate(enemyHitParticle, transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(enemyHitParticle, transform.position, Quaternion.identity);
         Destroy(obj, 0.2f);
         if(other.CompareTag("Player"))
         {

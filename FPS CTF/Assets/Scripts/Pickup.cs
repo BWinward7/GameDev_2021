@@ -12,6 +12,8 @@ public class Pickup : MonoBehaviour
     public PickupType type;
     public int value;
 
+    public GameObject pickupParticle;
+
     [Header ("Bobbing Animation")]
     public float rotationSpeed;
     public float bobSpeed;
@@ -25,7 +27,8 @@ public class Pickup : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             PlayerController player = other.GetComponent<PlayerController>();
-
+            GameObject obj = Instantiate(pickupParticle, transform.position, Quaternion.identity);
+            Destroy(obj, 0.2f);
             switch(type)
             {
                 case PickupType.Health:
