@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagment;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
     [Header("HUD")]
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI ammoText;
     public Image healthBarFill;
     [Header("Pause Menu")]
     public GameObject pauseMenu;
@@ -18,7 +19,7 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI endGameScoreText;
 
     // Instance
-    public static GameUI instance;
+    public static UI instance;
     void Awake()
     {
         instance = this;
