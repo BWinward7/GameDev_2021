@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Weapon weapon;
 
+    
+
     [Header("Stats")]
     public int curHP;
     public int maxHP;
@@ -33,6 +35,15 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    void Start()
+    {
+        //Initialze the UI
+        UI.instance.UpdateHealthBar(curHP, maxHP);
+        UI.instance.UpdateScoreText(0);
+        UI.instance.UpdateAmmoText(weapon.currentAmmo, weapon.maxAmmo);
+
+    }
+
     public void TakeDamage(int damage)
     {
         curHP -= damage;
@@ -43,12 +54,16 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-
+        GameManager.instance.LoseGame();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Don't do anything when paused
+        if(GameManager.instance.gamePaused)
+            return;
+
         Move();
         CameraLook();
 
@@ -62,6 +77,7 @@ public class PlayerController : MonoBehaviour
                 weapon.Shoot();
             }
         }
+        
     }
 
     void Move()
