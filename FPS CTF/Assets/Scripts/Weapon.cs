@@ -16,13 +16,18 @@ public class Weapon : MonoBehaviour
     private float lastAttackTime;
     private bool isPlayer;
 
+    public AudioClip shootSfx;
+    public AudioSource audioSource;
+
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
         // are we attached to the player
         if(GetComponent<PlayerController>())
         {
             isPlayer = true;
+            audioSource = GetComponent<AudioSource>();
+
         }
     }
     public bool CanShoot()
@@ -37,6 +42,7 @@ public class Weapon : MonoBehaviour
     }
     public void Shoot()
     {
+        audioSource.PlayOneShot(shootSfx);
         lastAttackTime = Time.time;
         currentAmmo--;
         GameObject bullet = bulletPool.GetObject();

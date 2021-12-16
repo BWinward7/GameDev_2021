@@ -21,6 +21,7 @@ public class Pickup : MonoBehaviour
 
     private Vector3 startPos;
     private bool bobbingUp;
+    public AudioClip pickupSfx;
     
     void OnTriggerEnter(Collider other)
     {
@@ -39,6 +40,8 @@ public class Pickup : MonoBehaviour
                 player.GiveAmmo(value);
                 break;
             }
+            //Play pickup audio clip
+            other.GetComponent<AudioSource>().PlayOneShot(pickupSfx);
 
             Destroy(gameObject);
         }
