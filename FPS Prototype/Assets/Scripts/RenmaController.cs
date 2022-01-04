@@ -68,7 +68,7 @@ public class RenmaController : MonoBehaviour
 
     void Move()
     {
-        /*
+        
         //This code makes my "W" key always move me to where I'm looking
         hInput = Input.GetAxis("Horizontal");
         vInput = Input.GetAxis("Vertical");
@@ -76,7 +76,7 @@ public class RenmaController : MonoBehaviour
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime * hInput);
         // Makes White move up and down
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime * vInput);
-        */
+        /*
         //Original Code
         float x = Input.GetAxis("Horizontal") * moveSpeed;
         float z = Input.GetAxis("Vertical") * moveSpeed;
@@ -87,6 +87,7 @@ public class RenmaController : MonoBehaviour
         dir.y = rb.velocity.y;
         //Move
         rb.velocity = dir;
+        */
     }
 
     void Jump()

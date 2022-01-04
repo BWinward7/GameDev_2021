@@ -13,4 +13,8 @@ public class GravityOrbit : MonoBehaviour
             other.GetComponent<GravityController>().gravity = this.GetComponent<GravityOrbit>();
         }
     }
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
 }
