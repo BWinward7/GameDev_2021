@@ -19,8 +19,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Weapon weapon;
 
-    
-
     [Header("Stats")]
     public int curHP;
     public int maxHP;
@@ -50,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
         if(curHP <= 0)
             Die();
+        UI.instance.UpdateHealthBar(curHP, maxHP);
     }
 
     void Die()
@@ -61,9 +60,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Don't do anything when paused
-        if(GameManager.instance.gamePaused)
+        /*if(GameManager.instance.gamePaused)
             return;
 
+        */
         Move();
         CameraLook();
 

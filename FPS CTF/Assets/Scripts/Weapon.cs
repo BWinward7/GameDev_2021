@@ -50,5 +50,8 @@ public class Weapon : MonoBehaviour
         bullet.transform.rotation = projectileStart.rotation;
         //set the velocity
         bullet.GetComponent<Rigidbody>().velocity = projectileStart.forward * projectileSpeed;
+        if(isPlayer)
+            UI.instance.UpdateAmmoText(currentAmmo, maxAmmo);
     }
+
 }

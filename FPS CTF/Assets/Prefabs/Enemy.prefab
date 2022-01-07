@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7377479223756811476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.55400014, y: -0.49300003, z: 1.1300001}
+  m_LocalPosition: {x: 0.3, y: -0.49300003, z: 1.1300001}
   m_LocalScale: {x: 0.4, y: 0.40000015, z: 0.40000015}
   m_Children: []
   m_Father: {fileID: 7377479224742789587}
@@ -167,6 +167,8 @@ MonoBehaviour:
   maxAmmo: 12
   infiniteAmmo: 1
   attackSpeed: 0.2
+  shootSfx: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &7377479224710262768
 MonoBehaviour:
   m_ObjectHideFlags: 0
