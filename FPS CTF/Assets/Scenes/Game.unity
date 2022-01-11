@@ -474,7 +474,7 @@ MonoBehaviour:
   lookSensitivity: 25
   maxLookX: 45
   minLookX: -45
-  curHP: 12
+  curHP: 6
   maxHP: 12
 --- !u!114 &354275799
 MonoBehaviour:
@@ -509,6 +509,8 @@ MonoBehaviour:
   maxAmmo: 12
   infiniteAmmo: 0
   attackSpeed: 0.2
+  shootSfx: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!82 &354275801
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1570,6 +1572,10 @@ PrefabInstance:
     - target: {fileID: 7377479224710262282, guid: 97046ed74f48d4f058da9d1b48cbd62a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7377479224710262769, guid: 97046ed74f48d4f058da9d1b48cbd62a, type: 3}
+      propertyPath: scoreToGive
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7377479224710262770, guid: 97046ed74f48d4f058da9d1b48cbd62a, type: 3}
       propertyPath: m_Name
@@ -2717,6 +2723,7 @@ MonoBehaviour:
   rotationSpeed: 0
   bobSpeed: 0
   bobHeight: 0
+  pickupSfx: {fileID: 0}
 --- !u!135 &1826926070
 SphereCollider:
   m_ObjectHideFlags: 0
