@@ -60,10 +60,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Don't do anything when paused
-        /*if(GameManager.instance.gamePaused)
+        if(GameManager.instance.gamePaused)
             return;
 
-        */
         Move();
         CameraLook();
 
@@ -108,7 +107,7 @@ public class PlayerController : MonoBehaviour
         rotX += Input.GetAxis("Mouse Y") * lookSensitivity;
         //Clamps the camera up and down rotation
         rotX = Mathf.Clamp(rotX, minLookX, maxLookX);
-        //Apply rotation to camera
+        //Apply rotation to cameras
         camera.transform.localRotation = Quaternion.Euler(-rotX,0,0);
         transform.eulerAngles += Vector3.up * y;
         
@@ -117,10 +116,12 @@ public class PlayerController : MonoBehaviour
     public void GiveHealth (int amountToGive)
     {
         curHP = Mathf.Clamp(curHP + amountToGive, 0, maxHP);
+        UI.instance.UpdateHealthBar(curHP, maxHP);
     }
 
     public void GiveAmmo (int ammountToGive)
     {
         weapon.currentAmmo = Mathf.Clamp(weapon.currentAmmo + ammountToGive, 0, weapon.maxAmmo);
+        UI.instance.UpdateAmmoText(weapon.currentAmmo, weapon.maxAmmo);
     }
 }

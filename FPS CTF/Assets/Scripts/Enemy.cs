@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
         rb.AddForce(Vector3.up*5, ForceMode.Impulse);
 
         GameManager.instance.AddScore(scoreToGive);
-        Destroy(gameObject,1);
+        Destroy(gameObject);
     }
     // Update is called once per frame
     public Transform GetClosestTeam()

@@ -50,12 +50,12 @@ public class UI : MonoBehaviour
         endGameScreen.SetActive(true);
         endGameHeaderText.text = won == true ? "You Win" : "You Lose";
         endGameHeaderText.color = won == true ? Color.green : Color.red;
-        endGameHeaderText.text = "<b>score</b>\n" +score;
+        endGameScoreText.text = "<b>score</b>\n" +score;
     }
 
     public void OnResumeButton()
     {
-
+        GameManager.instance.TogglePauseGame();
     }
 
     public void OnRestartButton()
