@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float attackRange;
+
     public float yPathOffset;
 
     private List<Vector3> path;
@@ -24,12 +25,17 @@ public class Enemy : MonoBehaviour
     public Transform closestTeam;
     private GameObject rteam;
 
+    private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
+        curHP = maxHP;
         //Gather the Components
         weapon = GetComponent<Weapon>();
         player = FindObjectOfType<PlayerController>().gameObject;
+        rb = GetComponent<Rigidbody>();
+
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
     }
 
@@ -62,7 +68,13 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        Destroy(gameObject);
+        //Death Animation
+        rb.constraints = RigidbodyConstraints.None;
+        rb.AddForce(Vector3.back*10, ForceMode.Impulse);
+        rb.AddForce(Vector3.up*5, ForceMode.Impulse);
+
+        GameManager.instance.AddScore(scoreToGive);
+        Destroy(gameObject,1);
     }
     // Update is called once per frame
     public Transform GetClosestTeam()

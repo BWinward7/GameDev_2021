@@ -6,7 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public int scoreToWin;
     public int curScore;
-    public bool gamePaused = false;
+
+    public bool gamePaused;
+
     //Instance of GameManager
     public static GameManager instance;
 

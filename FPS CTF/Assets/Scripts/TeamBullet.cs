@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TeamBullet : MonoBehaviour
 {
-    public int damage = 1;
+    public int damage;
     public float lifetime;
     private float shootTime;
 
@@ -23,11 +23,10 @@ public class TeamBullet : MonoBehaviour
     {
         //Did we hit the targer aka player
         GameObject obj = Instantiate(teamHitParticle, transform.position, Quaternion.identity);
-        Destroy(obj, 0.2f);
+        Destroy(obj, 0.5f);
+
         if(other.CompareTag("Enemy"))
-        {
             other.GetComponent<Enemy>().TakeDamage(damage);
-        }
         else
             gameObject.SetActive(false);
     }

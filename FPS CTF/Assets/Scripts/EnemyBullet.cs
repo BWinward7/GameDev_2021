@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public int damage = 1;
+    public int damage;
     public float lifetime;
     private float shootTime;
 
@@ -23,18 +23,15 @@ public class EnemyBullet : MonoBehaviour
     {
         //Did we hit the targer aka player
         GameObject obj = Instantiate(enemyHitParticle, transform.position, Quaternion.identity);
-        Destroy(obj, 0.2f);
+        Destroy(obj, 0.5f);
         if(other.CompareTag("Player"))
-        {
             other.GetComponent<PlayerController>().TakeDamage(damage);
-        }
-        if(other.CompareTag("Team"))
-        {
-            other.GetComponent<Team>().TakeDamage(damage);
-        }
         else
+            if(other.CompareTag("Team"))
+                    other.GetComponent<Team>().TakeDamage(damage);
+        
             gameObject.SetActive(false);
-    }
+        }
     // Update is called once per frame
     //Disabe Bullet
     void Update()
